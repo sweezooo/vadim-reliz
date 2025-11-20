@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream</title>
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <h1 id="account-title"></h1>
+    <p id="account-price"></p>
+
+    <div id="account-info">
+
+    </div>
+
+    <!-- Сюда появится кнопка купить -->
+    <div id="buy-section"></div>
+</header>
+
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+const titleEl = document.getElementById('account-title');
+const priceEl = document.getElementById('account-price');
+const infoEl = document.getElementById('account-info');
+const buyEl = document.getElementById('buy-section');
+
+const accountsData = {
+  steam1: {
+    title: 'Steam — акаунт',
+    price: 648,
+    info: [
+      'Ігр: 100+',
+      'Топ ігр: brick rigs, rust, cs2, tf2, squad, gta5, gta4, cities skylines',
+      'Bonus: StatTrak™ M4A4 | Рубітель, PVRIS — Evergreen',
+      'Доп. контент: Prime',
+      'Безпека: 10/10',
+      'Пароль можна змінити',
+      'Перший власник заходив тиждень тому',
+      'Gmail передається повністю'
+    ]
+  },
+
+  cs1: {
+    title: 'CS2 — акаунт',
+    price: 1000,
+    info: [
+      'Ммр: 10000',
+      'Prime статус: Є',
+      'Bonus: AK-47 | Побажання на ніч, 10 кейсів революція, Desert Eagle | Потік інформації,',
+      'Доп. контент: Prime',
+      'Безпека: 5/10',
+      'Пароль можна змінити',
+      'Перший власник заходив 3 дня тому',
+      'Gmail передається частково'
+    ]
+  },
+
+  dota1: {
+    title: 'Dota 2 — акаунт',
+    price: 450,
+    info: [
+      'MMR: 2150',
+      'Колекція сетів: 12',
+      'Є рідкісні предмети: Inscribed, Unusual',
+      'Бойова перепустка 2023 — рівень 43',
+      'Є Arcana: Pudge',
+      'Безпека: 9/10',
+      'Повністю доступ до пошти',
+      'Пароль можна змінити',
+      'Останній власник заходив 5 днів тому'
+    ]
+  },
+
+  war1: {
+    title: 'War Thunder — акаунт',
+    price: 599,
+    info: [
+      'Ранги: наземна техніка — IV, авіація — III',
+      'Преміум техніка: KV-1B, P-47D Thunderbolt',
+      '400 Золотих Орлів на акаунті',
+      'Прогрес кампании: 57%',
+      'Безпека: 8/10 — акаунт чистий, без блокувань',
+      'Пароль можна змінити',
+      'Захист через email — доступ повний'
+    ]
+  },
+
+  cs2: {
+    title: 'CS2 — акаунт',
+    price: 899,
+    info: [
+      'Звання: Рятівник (Gold Nova Master)',
+      'Prime статус: Є',
+      'Скіни: AK-47 | Червона лінія, AWP | Азімов (пошкоджений), USP-S | Cortex',
+      'Інвентар вартістю ~300 грн',
+      'Грано більше 650 годин',
+      'безпека: 9/10',
+      'Без VAC та лімітів',
+      'Останній власник заходив 2 дні тому',
+      'Email передається повністю'
+    ]
+  },
+
+  dota2: {
+    title: 'Dota 2 — акаунт',
+    price: 1860,
+    info: [
+      'MMR: 4200',
+      'Є Arcana: Phantom Assassin, Terrorblade',
+      'Ultra Rare сет: Queen of Pain — Golden',
+      'Бойова перепустка 2021 — рівень 146',
+      'Є Immortal I — III з 2020, 2021, 2022',
+      'Dota Plus активний на 20 днів',
+      'Безпека: 10/10',
+      'Повний доступ до пошти',
+      'Останній власник заходив сьогодні'
+    ]
+  },
+  dota3: {
+    title: 'Dota 2 — акаунт',
+    price: 345,
+    info: [
+      'MMR: 1500',
+      'Є прості сети на: Sniper, Juggernaut, Lina',
+      'Бойова перепустка 2022 — рівень 8',
+      'Невелика колекція — 25 предметів',
+      'Dota Plus відсутній',
+      'Безпека: 7/10',
+      'Повний доступ до пошти',
+      'Останній онлайн: 1 тиждень тому'
+    ]
+  },
+  steam2: {
+    title: 'Steam — акаунт',
+    price: 7590,
+    info: [
+      '140+ ігор у бібліотеці',
+      'Топ ігри: Rust, ARK, GTA V, Red Dead Redemption 2, DayZ, Elden Ring, CS2, PUBG',
+      'Інвентар CS2 ~3500 грн (AWP | Hyper Beast, AK-47 | Неон Революція)',
+      'Є DLC: Rust — Sunburn Pack, GTA V — Criminal Enterprise',
+      'VR-ігри: Beat Saber, Half-Life Alyx',
+      'Безпека акаунту: 10/10',
+      'Доступ до пошти — повний',
+      'Перший власник заходив вчора'
+    ]
+  }
+};
+
+
+// Генерация контента
+if (accountsData[id]) {
+  const data = accountsData[id];
+
+  titleEl.textContent = data.title;
+  priceEl.textContent = `Ціна: ${data.price} грн`;
+  infoEl.innerHTML = data.info.map(t => `<p>${t}</p>`).join('');
+
+  buyEl.innerHTML = `
+    <button id="buy-btn" style="padding: 10px 18px; margin-top: 20px; cursor: pointer;">
+      Купити
+    </button>
+  `;
+
+  document.getElementById('buy-btn').addEventListener('click', () => {
+    buyEl.innerHTML = `
+      <h3>Оплата</h3>
+      <p>Введіть номер карти:</p>
+      <input id="card-number" placeholder="0000 0000 0000 0000" style="padding: 8px; width: 250px;">
+
+      <p>Сума до оплати: ${data.price} грн</p>
+
+      <button id="pay-btn" style="padding: 10px 18px; margin-top: 10px; cursor: pointer;">
+        Оплатити
+      </button>
+    `;
+
+    document.getElementById('pay-btn').addEventListener('click', () => {
+      alert('Оплата відправлена!');
+    });
+  });
+
+} else {
+  titleEl.textContent = 'Аккаунт не найден';
+}
+</script>
+
+    <footer>
+        <div class="social-links">
+            <div class="social-item">
+                <i class="fab fa-instagram"></i>
+                <span>123@gmail.com</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-telegram-plane"></i>
+                <span>123@gmail.com</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-tiktok"></i>
+                <span>123@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

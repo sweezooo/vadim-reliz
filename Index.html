@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
+    <header class="header-container">
+        <div class="logo-section">
+            <span class="logo">Dream</span>
+            <i class="fas fa-shopping-basket"></i>
+        </div>
+        
+
+        <div class="search-section">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+        <div>
+            <span class="sell-button">Швидкий продаж акаунтів</span>
+        </div>
+        <div class="profile-section">
+            <div class="profile-info">
+                <button class="log" id=log>Вход</button>
+            </div>
+            <i class="fas fa-user-circle profile-icon"></i>
+
+                <div class="theme">
+                    <input class="l" type="checkbox"/>
+                </div>
+            </div>    
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="listings-section">
+
+        <section class="game-cards-section">
+            <div class="game-card">
+                <img src="img/Counter-strike_2 (1) 1.png" alt="Counter-Strike 2" style="background-color: #333; height: 100%;">
+            </div>
+            <div class="game-card">
+                <img src="img/store_home_share 1.png" alt="Steam" style="background-color: #333; height: 100%;">
+            </div>
+            <div class="game-card">
+                <img src="img/Обложка_Dota_2 1.png" alt="Dota 2" style="background-color: #333; height: 100%;">
+            </div>
+            <div class="game-card">
+                <img src="img/images (5) 1.png" alt="War Thunder" style="background-color: #333; height: 100%;">
+            </div>
+        </section>
+
+            <div class="listing-item" data-href="details.html?id=steam1">
+                <div class="listing-details">
+                    <img src="img/Steam_icon_logo.svg 1.png" alt="Steam">
+                    <span>Steam — акаунт</span>
+                </div>
+                <span class="price">648 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=cs1">
+                <div class="listing-details">
+                    <img src="img/1666157904_40-zefirka-club-p-logotip-ks-go-bez-fona-54 1.png" alt="CS2">
+                    <span>CS2 — акаунт через стим</span>
+                </div>
+                <span class="price">899 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=dota1">
+                <div class="listing-details">
+                    <img src="img/dota 1.png" alt="Dota 2">
+                    <span>Dota 2 — акаунт через стим</span>
+                </div>
+                <span class="price">450 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=war1">
+                <div class="listing-details">
+                    <img src="img/pngwing.com 1.png" alt="War Thunder">
+                    <span>War Thunder — акаунт через сайт</span>
+                </div>
+                <span class="price">599 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=cs2">
+                <div class="listing-details">
+                    <img src="img/1666157904_40-zefirka-club-p-logotip-ks-go-bez-fona-54 1.png" alt="CS2">
+                    <span>CS2 — акаунт через стим</span>
+                </div>
+                <span class="price">899 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=dota2">
+                <div class="listing-details">
+                    <img src="img/dota 1.png" alt="Dota 2">
+                    <span>Dota 2 — акаунт через стим</span>
+                </div>
+                <span class="price">1860 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=dota3">
+                <div class="listing-details">
+                    <img src="img/dota 1.png" alt="Dota 2">
+                    <span>Dota 2 — акаунт через стим</span>
+                </div>
+                <span class="price">345 <span class="highlight-price">грн</span></span>
+            </div>
+
+            <div class="listing-item" data-href="details.html?id=steam2">
+                <div class="listing-details">
+                    <img src="img/Steam_icon_logo.svg 1.png" alt="Steam2">
+                    <span>Steam — акаунт</span>
+                </div>
+                <span class="price">7590 <span class="highlight-price">грн</span></span>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <div class="social-item">
+                <i class="fab fa-instagram"></i>
+                <span>123@gmail.com</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-telegram-plane"></i>
+                <span>123@gmail.com</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-tiktok"></i>
+                <span>123@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+<script>
+document.querySelector('.theme input').addEventListener('change', function() {
+    document.body.classList.toggle('light-theme', this.checked);
+});
+document.querySelectorAll(".listing-item").forEach(item => {
+    item.addEventListener("mousemove", e => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left; 
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const moveX = (x - centerX) / 20;
+        const moveY = (y - centerY) / 20;
+
+        item.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+
+    item.addEventListener("mouseleave", () => {
+        item.style.transform = "translate(0, 0)";
+    });
+});
+document.querySelectorAll('.listing-item').forEach(item => {
+  item.addEventListener('click', () => {
+    window.location.href = item.dataset.href;
+  });
+});
+const log = document.getElementById('log')
+
+log.addEventListener("click", function(){
+    window.location.assign('registration.html')
+})
+// Проверяем логин
+const savedUser = JSON.parse(localStorage.getItem("user"));
+const loggedIn = localStorage.getItem("loggedIn") === "true";
+const logBtn = document.getElementById('log');
+
+if (loggedIn && savedUser) {
+    logBtn.textContent = savedUser.username;
+    logBtn.disabled = true;
+} else {
+    logBtn.addEventListener("click", function(){
+        window.location.assign('registration.html');
+    });
+}
+</script>
+</body>
+</html>

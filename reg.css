@@ -1,0 +1,145 @@
+.container{
+    font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.section {
+    display: flex;
+    gap: 100px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+body {
+    background-color: #44444E;
+    color: #ffffff;
+    min-height: 100vh;
+}
+.form-control{
+    background-color: #62626b;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: none;
+    color: #cccccc;
+    height: 50px;
+    width: 190px;
+    transition: background-color 0.3s ease;
+}
+.form-control:hover {
+    background-color: #5a3ec8;
+    color: #cccccc;
+}
+
+.register-btn-cart-btn-margin-y-mt-4{
+    height: 50px;
+    width: 130px;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 20px;
+    background-color: #5a3ec8;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.register-btn-cart-btn-margin-y-mt-4:hover {
+    background-color: #7355e0;
+}
+.registration {
+    background-color: #3c3b45;
+    padding: 40px 50px;
+    border-radius: 40px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    width: 350px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center; 
+}
+
+.form-control {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-bottom: 3px solid #7a20d6;
+    background-color: transparent;
+    color: #ffffff;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+.register-btn-cart-btn-margin-y-mt-4 {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background-color: #7a20d6;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn-cart-btn-margin-y-mt-4:hover {
+    background-color: #9b45ff;
+    transform: scale(1.03);
+}
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+.form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*-----------Footer-----------*/
+
+
+footer {
+    background-color: #37353E;
+    margin-top: 40px;
+    padding: 20px 0;
+}
+
+.social-links {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-item i {
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.social-item span {
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 8px;
+}
