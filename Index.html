@@ -141,9 +141,13 @@
         </div>
     </footer>
 <script>
-document.querySelector('.theme input').addEventListener('change', function() {
-    document.body.classList.toggle('light-theme', this.checked);
-});
+const themeInput = document.querySelector('.theme input');
+if (themeInput) {
+    themeInput.addEventListener('change', function() {
+        document.body.classList.toggle('light-theme', this.checked);
+    });
+}
+
 document.querySelectorAll(".listing-item").forEach(item => {
     item.addEventListener("mousemove", e => {
         const rect = item.getBoundingClientRect();
@@ -168,12 +172,14 @@ document.querySelectorAll('.listing-item').forEach(item => {
     window.location.href = item.dataset.href;
   });
 });
-const log = document.getElementById('log')
+const log = document.getElementById('log');
 
-log.addEventListener("click", function(){
-    window.location.assign('registration.html')
-})
-// Проверяем логин
+if (log) {
+    log.addEventListener("click", function(){
+        window.location.assign('registration.html');
+    });
+}
+
 const savedUser = JSON.parse(localStorage.getItem("user"));
 const loggedIn = localStorage.getItem("loggedIn") === "true";
 const logBtn = document.getElementById('log');
@@ -187,5 +193,44 @@ if (loggedIn && savedUser) {
     });
 }
 </script>
+
+<script>
+(function(){
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    const loggedIn = localStorage.getItem("loggedIn") === "true";
+    const logBtn = document.getElementById('log');
+
+    if (!logBtn) return;
+
+    const newLogBtn = logBtn.cloneNode(true);
+    logBtn.parentNode.replaceChild(newLogBtn, logBtn);
+
+    const btn = document.getElementById('log');
+
+    if (loggedIn && savedUser) {
+        btn.textContent = savedUser.username;
+
+        btn.addEventListener("mouseenter", () => {
+            btn.textContent = "Вихід";
+        });
+
+        btn.addEventListener("mouseleave", () => {
+            btn.textContent = savedUser.username;
+        });
+
+        btn.addEventListener("click", () => {
+            localStorage.removeItem("loggedIn");
+            window.location.reload();
+        });
+
+    } else {
+        btn.textContent = "Вход";
+        btn.addEventListener("click", () => {
+            window.location.assign('registration.html');
+        });
+    }
+})();
+</script>
+
 </body>
 </html>
