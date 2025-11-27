@@ -27,35 +27,33 @@
         </div>
         <div class="profile-section">
             <div class="profile-info">
-                <button class="log" id=log>Вход</button>
+                <button class="log" id="log">Вход</button>
             </div>
             <i class="fas fa-user-circle profile-icon"></i>
 
-                <div class="theme">
-                    <input class="l" type="checkbox"/>
-                </div>
-            </div>    
-        </div>
+            <div class="theme">
+                <input class="l" type="checkbox"/>
+            </div>
+        </div>    
     </header>
 
     <main>
-        
         <section class="listings-section">
 
-        <section class="game-cards-section">
-            <div class="game-card">
-                <img src="img/Counter-strike_2 (1) 1.png" alt="Counter-Strike 2" style="background-color: #333; height: 100%;">
-            </div>
-            <div class="game-card">
-                <img src="img/store_home_share 1.png" alt="Steam" style="background-color: #333; height: 100%;">
-            </div>
-            <div class="game-card">
-                <img src="img/Обложка_Dota_2 1.png" alt="Dota 2" style="background-color: #333; height: 100%;">
-            </div>
-            <div class="game-card">
-                <img src="img/images (5) 1.png" alt="War Thunder" style="background-color: #333; height: 100%;">
-            </div>
-        </section>
+            <section class="game-cards-section">
+                <div class="game-card">
+                    <img src="img/Counter-strike_2 (1) 1.png" alt="Counter-Strike 2" style="background-color: #333; height: 100%;">
+                </div>
+                <div class="game-card">
+                    <img src="img/store_home_share 1.png" alt="Steam" style="background-color: #333; height: 100%;">
+                </div>
+                <div class="game-card">
+                    <img src="img/Обложка_Dota_2 1.png" alt="Dota 2" style="background-color: #333; height: 100%;">
+                </div>
+                <div class="game-card">
+                    <img src="img/images (5) 1.png" alt="War Thunder" style="background-color: #333; height: 100%;">
+                </div>
+            </section>
 
             <div class="listing-item" data-href="details.html?id=steam1">
                 <div class="listing-details">
@@ -167,70 +165,42 @@ document.querySelectorAll(".listing-item").forEach(item => {
         item.style.transform = "translate(0, 0)";
     });
 });
+
 document.querySelectorAll('.listing-item').forEach(item => {
   item.addEventListener('click', () => {
     window.location.href = item.dataset.href;
   });
 });
-const log = document.getElementById('log');
 
-if (log) {
-    log.addEventListener("click", function(){
-        window.location.assign('registration.html');
-    });
-}
+const logBtn = document.getElementById('log');
+
+logBtn.disabled = false;
 
 const savedUser = JSON.parse(localStorage.getItem("user"));
 const loggedIn = localStorage.getItem("loggedIn") === "true";
-const logBtn = document.getElementById('log');
 
 if (loggedIn && savedUser) {
     logBtn.textContent = savedUser.username;
-    logBtn.disabled = true;
+
+    logBtn.addEventListener("mouseenter", () => {
+        logBtn.textContent = "Вихід";
+    });
+
+    logBtn.addEventListener("mouseleave", () => {
+        logBtn.textContent = savedUser.username;
+    });
+
+    logBtn.addEventListener("click", () => {
+        localStorage.removeItem("loggedIn");
+        logBtn.textContent = "Вход";
+        window.location.reload();
+    });
+
 } else {
     logBtn.addEventListener("click", function(){
         window.location.assign('registration.html');
     });
 }
 </script>
-
-<script>
-(function(){
-    const savedUser = JSON.parse(localStorage.getItem("user"));
-    const loggedIn = localStorage.getItem("loggedIn") === "true";
-    const logBtn = document.getElementById('log');
-
-    if (!logBtn) return;
-
-    const newLogBtn = logBtn.cloneNode(true);
-    logBtn.parentNode.replaceChild(newLogBtn, logBtn);
-
-    const btn = document.getElementById('log');
-
-    if (loggedIn && savedUser) {
-        btn.textContent = savedUser.username;
-
-        btn.addEventListener("mouseenter", () => {
-            btn.textContent = "Вихід";
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            btn.textContent = savedUser.username;
-        });
-
-        btn.addEventListener("click", () => {
-            localStorage.removeItem("loggedIn");
-            window.location.reload();
-        });
-
-    } else {
-        btn.textContent = "Вход";
-        btn.addEventListener("click", () => {
-            window.location.assign('registration.html');
-        });
-    }
-})();
-</script>
-
 </body>
 </html>
